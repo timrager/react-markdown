@@ -9,10 +9,10 @@ import './style.css';
 export default function App() {
 
     // Set State for Notes and ID for Notes
-    const [notes, setNotes] = React.useState( JSON.parse(localStorage.getItem("notes")) || [])
+    const [notes, setNotes] = React.useState( () => JSON.parse(localStorage.getItem("notes")) || [])
     const [currentNoteId, setCurrentNoteId] = React.useState( (notes[0] && notes[0].id) || "" )
     
-    React.useEffect(() => {
+    React.useEffect( () => {
         localStorage.setItem("notes", JSON.stringify(notes))
     }, [notes])
 
